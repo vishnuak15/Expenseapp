@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-
+{% load mathfilters %}
 <div class="container">
     <br>
   <b><h1>Dashboard{{expense.user}}</h1></b>
@@ -29,7 +29,7 @@
             <div class="card-body">
                 <div class="a">
                     <h4 >Balance</h4>
-                <div class="a"> <b><p>₹{{ balance }}  </p></b> </div> 
+                <div class="a"> <b><p>₹{{ TIncome.amount__sum|sub:total.amount__sum }}  </p></b> </div> 
                 </div>
             </div>
         </div>

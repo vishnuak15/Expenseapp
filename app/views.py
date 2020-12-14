@@ -93,7 +93,7 @@ def Entry(request):
     form = ExpenseForm(request.POST) 
     if form.is_valid(): 
         Expense = form.save(commit=False)
-        Expense.owner = request.user 
+        Expense.owner = request.user
         Expense.save()
         return redirect('list')
           
@@ -145,15 +145,7 @@ def Dashboard(request):
     tincome = TIncome['amount__sum']
     expense = total['amount__sum'] 
     
-    
-    def balance():
-        if tincome > expense:
-            balance = tincome - expense
-            return balance
-        else:
-            balance = 0
-            return balance
-            
+
             
         
     
@@ -167,7 +159,6 @@ def Dashboard(request):
         'expenses':expenses,
         'total':total,
         'TIncome':TIncome,
-        'balance':balance
         
     
         }
