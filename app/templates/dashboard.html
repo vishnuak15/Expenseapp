@@ -25,7 +25,15 @@
                 </div>
             </div>
         </div>
-        
+        <div class="card">
+            <div class="card-body">
+                <div class="a">
+                    <h4 >Balance</h4>
+                <div class="a"> <b><p>₹{{ balance }}  </p></b> </div> 
+                </div>
+            </div>
+        </div>
+   
     
     </div>
   </div>
@@ -56,7 +64,7 @@
                 <th scope="row"> {{ forloop.counter }} </th>
 
                 <td ><a  href="{% url 'detail'  pk=expense.pk  %}">{{expense.description}}</a></td>
-                <td>{{expense.category.id}}</td>
+                <td>{{expense.category}}</td>
                 <td>{{expense.amount}}</td>   
                 <td>{{expense.detials}}</td>
                 <td>{{expense.date}}</td>

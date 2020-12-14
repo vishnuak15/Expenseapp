@@ -142,6 +142,23 @@ def Dashboard(request):
     expenses = Expense.objects.filter(owner=request.user)  
     total = Expense.objects.filter(owner=request.user,category = 2).aggregate(Sum('amount'))
     TIncome = Expense.objects.filter(owner=request.user,category = 1).aggregate(Sum('amount'))
+    tincome = TIncome['amount__sum']
+    expense = total['amount__sum'] 
+    
+    
+    def balance():
+        if tincome > expense:
+            balance = tincome - expense
+            return balance
+        else:
+            balance = 0
+            return balance
+            
+            
+        
+    
+
+        
     #balance = None
     #balance = { 'amount__sum': TIncome['amount__sum'] - total['amount__sum'] }
         
@@ -150,6 +167,7 @@ def Dashboard(request):
         'expenses':expenses,
         'total':total,
         'TIncome':TIncome,
+        'balance':balance
         
     
         }
