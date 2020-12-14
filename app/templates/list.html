@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <br>
+    <h1>List</h1>
+    {% if entity %}
+</div>
+<br>
+<div class="table-responsive container">
+    <table class="table table-light">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Description</th>
+                <th scope="col">Category</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Detials</th>
+                <th scope="col">Date</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            {% for acc in entity %}
+            <tbody>
+            <tr>
+                <th scope="row"> {{ forloop.counter }} </th>
+                <td ><a  href="{% url 'detail'  pk=acc.pk  %}">{{acc.description}}</a></td>
+                <td>{{acc.id}}</td>
+                <td>{{acc.amount}}</td>   
+                <td>{{acc.detials}}</td>
+                <td>{{acc.date}}</td>
+                <td class="text-light"><a href="{% url 'delete' pk=acc.pk %}"><button class="btn btn-danger">Delete</button></a></td>
+                <td class="text-light"><a href="{% url 'update' pk=acc.pk %}"><button class="btn btn-success">Update</button></a></td>
+            {% endfor %}
+            </tbody>
+    </table>
+
+
+    {% endif %}
+{% endblock %}
+

@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <br>
+  <b><h1>Dashboard{{expense.user}}</h1></b>
+ 
+  <br>
+
+       <div class="card-deck">
+        <div class="card">
+            <div class="card-body">
+                <div class="a">
+                    <h4 >Total expense</h4>
+                    <b><p> ₹ {{ total.amount__sum }} </p></b>
+                </div>
+            </div>
+          </div>
+   
+        <div class="card">
+            <div class="card-body">
+                <div class="a">
+                    <h4 >Total Income</h4>
+                <div class="a"> <b><p>₹{{ TIncome.amount__sum }}  </p></b> </div> 
+                </div>
+            </div>
+        </div>
+        
+    
+    </div>
+  </div>
+  
+<br><br><br>
+        
+    {% if expenses %}
+</div>
+<br>
+<div class="table-responsive container">
+    <table class="table table-light ">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Description</th>
+                <th scope="col">Category</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Detials</th>
+                <th scope="col">Date</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+
+            </tr>
+            </thead>
+            {% for expense in expenses %}
+            <tbody>
+            <tr>
+                <th scope="row"> {{ forloop.counter }} </th>
+
+                <td ><a  href="{% url 'detail'  pk=expense.pk  %}">{{expense.description}}</a></td>
+                <td>{{expense.category.id}}</td>
+                <td>{{expense.amount}}</td>   
+                <td>{{expense.detials}}</td>
+                <td>{{expense.date}}</td>
+                <td class="text-light"><a href="{% url 'delete' pk=expense.pk %}"><button class="btn btn-danger">Delete</button></a></td>
+                <td class="text-light"><a href="{% url 'update' pk=expense.pk %}"><button class="btn btn-success">Update</button></a></td>
+                
+            {% endfor %}
+            </tbody>
+    </table>
+
+
+
+    {% endif %}
+  
+
+
+
+
+</div>  
+{% endblock %}

@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href=" {% static 'css/name.css' %} ">
+
+    <link rel="stylesheet" href=" {% static 'js/main.js' %} ">
+</head>
+<body>
+ <form  method="POST"  >
+
+        {% csrf_token %}
+
+    <div class="login-page">
+        <div class="form">
+          <form class="register-form">
+            {{ form }}
+
+            <button>LOGIN</button>
+            {{ form.errors }}
+            <p class="message">Don't have an account ? <a href="{% url 'register' %}">Register</a></p>
+          </form>
+        </div>
+      </div>
+
+       
+
+
+
+    
+  
+    
+</body>
+</html>
