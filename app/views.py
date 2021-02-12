@@ -21,7 +21,18 @@ from django.views.generic import DetailView,CreateView,UpdateView,DeleteView
 from django.db.models import Sum
 from django import template
 from django.template.defaultfilters import stringfilter
+from rest_framework import viewsets
 
+from .models import Unicorn 
+from .serializers import UnicornSerializer
+
+
+# Create your views here.
+
+class UnicornViewSet(viewsets.ModelViewSet):
+
+    queryset = Unicorn.objects.all()
+    serializer_class = UnicornSerializer
 
 #@login_required(login_url='login')
 
@@ -104,7 +115,7 @@ def Entry(request):
 def delete(request, pk):
     program = get_object_or_404(Expense, pk=pk)
     program.delete()
-    return redirect('list')
+    return redirect('dashboard')
 
 
 def detail(request, pk): 
@@ -113,6 +124,7 @@ def detail(request, pk):
     context["data"] = Expense.objects.get(pk = pk) 
           
     return render(request, "detail.html", context) 
+
 
 
 def update(request, pk): 

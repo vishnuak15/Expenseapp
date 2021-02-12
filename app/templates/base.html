@@ -51,7 +51,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 
 <!-- Icon Bar (Sidebar - hidden on small screens) -->
 {% if user.is_authenticated %}
-<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center ">
   <!-- Avatar image in top left corner -->
   <a href="{% url 'dashboard' %}" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
     <i class="material-icons" style="font-size:48px;color:rgb(255, 255, 255)">dashboard</i>
@@ -66,10 +66,11 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
     <i class="material-icons" style="font-size:48px;color:rgb(255, 255, 255)">add</i>
     <p>Create an Entry</p>
   </a>
-  <a href="{% url 'list' %}" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+  <br><br><br><br><br><br><br><br><br>
+  <!-- <a href="{% url 'list' %}" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
     <i class="fas fa-list w3-xxlarge"></i>
     <p>View Entries</p>
-  </a>
+  </a> -->
   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
   <a href="{% url 'logout' %}" class="w3-bar-item w3-button w3-padding-large w3-hover-black ">

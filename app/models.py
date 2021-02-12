@@ -3,6 +3,7 @@ from django.urls import reverse
 from datetime import datetime    
 from django.contrib.auth.models import User
 from django.db.models import Sum
+from django.db import models
 # Create your models here.
 #  title 
 #  status
@@ -28,6 +29,14 @@ class Expense(models.Model):
     
     def get_absolute_url(self):
         return reverse("detail", kwargs={"pk": self.pk})
+    
+
+
+# Create your models here.
+
+class Unicorn(models.Model):
+    name = models.CharField(max_length=100)
+    age = models.IntegerField()
     
     
     

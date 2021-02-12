@@ -29,8 +29,22 @@
             <div class="card-body">
                 <div class="a">
                     <h4 >Balance</h4>
-                <div class="a"> <b><p>₹{{ TIncome.amount__sum|sub:total.amount__sum }}  </p></b> </div> 
+                    
+                    {% if TIncome.amount__sum < total.amount__sum %}
+
+                    <div class="a"> <b><p>₹0  </p></b> </div> 
                 </div>
+
+                    {% else %}
+
+                    <div class="a"> <b><p>₹{{ TIncome.amount__sum|sub:total.amount__sum }}  </p></b> </div> 
+                </div>
+
+                        
+                    {% endif %}
+                        
+
+                
             </div>
         </div>
    
@@ -38,7 +52,7 @@
     </div>
   </div>
   
-<br><br><br>
+<br>
         
     {% if expenses %}
 </div>
