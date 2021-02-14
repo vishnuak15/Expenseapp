@@ -106,7 +106,7 @@ def Entry(request):
         Expense = form.save(commit=False)
         Expense.owner = request.user
         Expense.save()
-        return redirect('list')
+        return redirect('dashboard')
           
     context['form']= form 
     return render(request, "Entry.html", context) 
@@ -131,13 +131,16 @@ def update(request, pk):
     context ={} 
   
     obj = get_object_or_404(Expense, pk = pk) 
-    form = ExpenseForm(request.POST, instance = obj) 
-  
-    if form.is_valid(): 
-        form.save() 
-        Expense.owner = request.user 
-        return redirect('detail', pk)
+    form = ExpenseForm(instance = obj) 
     
+    if request.method == 'POST':
+        filledform = ExpenseForm(request.POST,instance=obj)
+        if filledform.is_valid():
+            filledform.save()
+            form = filledform
+            Expense.owner = request.user 
+            return redirect('detail', pk)
+
   
     context["form"] = form 
   
