@@ -3,16 +3,8 @@ from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveUpdateDe
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.exceptions import ValidationError
 
-from rest_framework import viewsets
 from app.serializers import ExpenseSerializer
 from app.models import Expense,Category
-
-
-class ExpenseViewSet(viewsets.ModelViewSet):
-    
-    queryset = Expense.objects.all()
-    serializer_class = ExpenseSerializer
-
 
 
 class ExpensePagination(LimitOffsetPagination):
