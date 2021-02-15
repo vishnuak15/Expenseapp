@@ -5,6 +5,12 @@ from rest_framework.exceptions import ValidationError
 
 from app.serializers import ExpenseSerializer
 from app.models import Expense,Category
+from rest_framework import viewsets
+
+
+class ExpenseViewSet(viewsets.ModelViewSet):
+    queryset = Expense.objects.all()
+    serializer_class = ExpenseSerializer
 
 
 class ExpensePagination(LimitOffsetPagination):
